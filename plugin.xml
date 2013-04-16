@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            description="This is a Flow Graph Action Set"
+            id="br.ufla.dcc.plugin.flowGraphActionSet"
+            label="Flow Graph Action Set"
+            visible="true">
+         <action
+               class="br.ufla.dcc.plugin.view.action.FlowGraphActionDelegate"
+               icon="icons/run.png"
+               id="br.ufla.dcc.plugin.flowGraphAction"
+               label="Execute Flow Graph"
+               style="push"
+               toolbarPath="Normal"
+               tooltip="Run Flow Graph Analysis">
+         </action>
+      </actionSet>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            allowMultiple="false"
+            class="br.ufla.dcc.plugin.view.views.MethodsCountView"
+            icon="icons/marker.png"
+            id="br.ufla.dcc.plugin.flowGraph.methodsCountView"
+            name="Methods Count View"
+            restorable="true">
+      </view>
+      <view
+            class="br.ufla.dcc.plugin.view.views.FlowGraphView"
+            icon="icons/flowGraphView.png"
+            id="br.ufla.dcc.plugin.flowGraph.flowGraphView"
+            name="Flow  Graph View"
+            restorable="true">
+      </view>
+   </extension>
+   <extension
+         id="br.ufla.dcc.plugin.flowGraph.view.highFlowGraphMarker"
+         point="org.eclipse.core.resources.markers">
+      <super
+            type="org.eclipse.core.resources.problemmarker">
+      </super>
+      <persistent
+            value="false">
+      </persistent>
+   </extension>
+
+<!-- this changes the marker image in the editor marker bar  -->
+   <extension point="org.eclipse.ui.editors.annotationTypes">
+      <type markerType="br.ufla.dcc.plugin.flowGraph.view.highFlowGraphMarker"
+            name="br.ufla.dcc.plugin.view.highFlowGraphMarkerAnnotation">
+      </type>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.editors.markerAnnotationSpecification">
+      <specification
+            annotationType="br.ufla.dcc.plugin.view.highFlowGraphMarkerAnnotation"
+            icon="icons/marker.png"
+
+            textPreferenceKey="myAppIndication"
+            textPreferenceValue="true"
+            overviewRulerPreferenceKey="myAppIndicationInOverviewRuler"
+            overviewRulerPreferenceValue="true"
+            verticalRulerPreferenceKey="myAppIndicationInVerticalRuler"
+            verticalRulerPreferenceValue="true"
+            highlightPreferenceKey="myAppHighlighting"
+          
+            colorPreferenceKey="myAppIndicationColor"
+            colorPreferenceValue="248,248,255"
+            presentationLayer="3"
+            showInNextPrevDropdownToolbarAction="false"
+            includeOnPreferencePage="true"
+
+             >
+      </specification>
+   </extension>
+
+
+</plugin>
